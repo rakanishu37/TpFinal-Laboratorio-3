@@ -1,7 +1,9 @@
-package tp;
+package Modelos;
 
 import java.util.HashMap;
 import java.util.Stack;
+
+import Interfaces.moverCarta;
 
 public class Mazo implements moverCarta<Carta> {
 	private final int MAX_CARTAS = 40;
