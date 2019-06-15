@@ -2,13 +2,14 @@ package Modelos;
 
 import java.util.HashMap;
 import java.util.Stack;
+import java.util.Vector;
 
 import Interfaces.moverCarta;
 
 public class Mazo implements moverCarta<Carta> {
-	private final int MAX_CARTAS = 40;
+	public static final int MAX_CARTAS = 40;
 	// private int cartasRestante;
-	private Stack<Carta> cartas;
+	private Vector<Carta> cartas;
 
 	public Mazo() {
 		super();
@@ -32,17 +33,12 @@ public class Mazo implements moverCarta<Carta> {
 
 	@Override
 	public void insertarCarta(Carta cartaAInsertar) {
-		// cartas.add(cartaAInsertar);
-		// setCartasRestante(getCartasRestante()+1);
-		cartas.push(cartaAInsertar);
+		cartas.add(cartaAInsertar);
+		//setCartasRestante(getCartasRestante()+1);
+		//cartas.push(cartaAInsertar);
 	}
 
-	@Override
-	public Carta extraerCarta() {
-		// setCartasRestante(cartas.size()-1);
-		// return cartas.remove(0);
-		return cartas.pop();
-	}
+	
 
 	/*
 	 * tenemos un archivo binario de objetos de tipo Carta 
@@ -61,5 +57,16 @@ public class Mazo implements moverCarta<Carta> {
 	
 	
 	}
+	public boolean estaVacio()
+	{
+		return cartas.isEmpty();
 	}
-}
+
+	@Override
+	public Carta extraerCarta(int indice) {
+		// setCartasRestante(cartas.size()-1);
+		 return cartas.remove(indice);
+		//return cartas.pop();
+
+	}
+	}
