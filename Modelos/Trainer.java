@@ -1,4 +1,4 @@
-package cartas;
+package Modelos;
 
 public class Trainer extends Carta
 {
