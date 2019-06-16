@@ -31,8 +31,7 @@ public class Contenedor<T> implements moverCarta<T>,Iterable{
 	}
 
 	@Override
-	public Iterator iterator() {
-		
+	public Iterator<T> iterator() {		
 		return conjuntoDeElementos.iterator();
 	}
 

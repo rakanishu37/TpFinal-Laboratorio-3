@@ -1,14 +1,19 @@
 package Modelos;
 
-public abstract class Carta 
+import java.io.Serializable;
+
+public abstract class Carta implements Serializable
 {
+	//ultimoId va a contener el id disponbile
+	private static int idDisponible = 0;
 	private int id;
 	private String nombre;
 	
-	public Carta(int id, String nombre) 
+	public Carta(String nombre) 
 	{
 		super();
-		setId(id);
+		setId(idDisponible);
+		idDisponible++;
 		setNombre(nombre);
 	}
 	

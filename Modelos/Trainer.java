@@ -2,17 +2,15 @@ package Modelos;
 
 public class Trainer extends Carta
 {
-	private String palabraClave;
+	private String palabraClave;//Capas un arreglo y que se interprete afuera
 	private String descripcion;
-	
-	
-	
-	public Trainer(int id, String nombre, String Clave, String texto) 
-	{
-		super(id, nombre);
 		
+	public Trainer(String nombre, String Clave, String texto) 
+	{
+		super(nombre);
+		setPalabraClave(Clave);
+		setDescripcion(texto);
 	}
-
 
 	public String getPalabraClave() 
 	{
@@ -34,15 +32,9 @@ public class Trainer extends Carta
 		descripcion = texto;
 	}
 	
-	/** 
-	 * menu que haga los controles 
-	 */
-	
+	/*menu que haga los controles
 	public void usar()
-	{
-		
-		
-		
+	{		
 	}
-
+	 */
 }
