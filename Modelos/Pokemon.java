@@ -15,18 +15,18 @@ public class Pokemon extends Carta {
 	private Ataque ataque1;
 	private Ataque ataque2;
 
-	public Pokemon(String nombre, int vidaMaxima, int vidaActual, String tipo, int retirada, String debilidad,
-			String resistencia, Ataque ataque1, Ataque ataque2) {
+	public Pokemon(String nombre, int vidaMaxima, String tipo, int retirada, String debilidad,String resistencia,
+			Ataque ataque1, Ataque ataque2) {
 		super(nombre);
 		setVidaMaxima(vidaMaxima);
-		setVidaActual(vidaActual);
+		setVidaActual(vidaMaxima);
 		setTipo(tipo);
 		setCostoRetirada(retirada);
 		energiasEquipadas = new ArrayList<Energia>();
 		setDebilidad(debilidad);
 		setResistencia(resistencia);
 		setAtaque1(ataque1);
-		setAtaque1(ataque2);		
+		setAtaque2(ataque2);		
 	}
 
 	public int getVidaMaxima() {
@@ -77,8 +77,8 @@ public class Pokemon extends Carta {
 		return resistencia;
 	}
 
-	private void setResistencia(String resistencia) {
-		resistencia = resistencia;
+	private void setResistencia(String resist) {
+		resistencia = resist;
 	}
 
 	public Ataque getAtaque1() {
@@ -117,7 +117,8 @@ public class Pokemon extends Carta {
 	}
 	
 	/**
-	 * 
+	 * Baja la vida del pokemon en el daño del ataque, considerando resistencia
+	 * o debilidad
 	 * @param ataque del pokemon rival
 	 */
 	public void decrementarVida(Ataque ataque) {
@@ -155,5 +156,22 @@ public class Pokemon extends Carta {
 			setVidaActual(nuevaVida);
 		}
 	}
-	
+	@Override
+	public String toString() {
+		String msg= "Pokemon\n"+ super.toString()
+				+ "vidaMaxima= " + vidaMaxima 
+				+ "\nvidaActual= " + vidaActual 
+				+ "\ntipo= " + tipo
+				+ "\ncostoRetirada= " + costoRetirada 
+				+ "\nenergiasEquipadas= " + energiasEquipadas.toString() 
+				+ "\ndebilidad= " + debilidad
+				+ "\nresistencia= " + resistencia 
+				+"\n------ataque1------\n" + getAtaque1().toString() 
+				+"\n-------------------\n";
+		if(ataque2!=(null)) {
+			msg+= "\n------ataque2------\n" + ataque2.toString()
+				 +"\n-------------------\n";
+		}		
+		return msg;
+	}
 }

@@ -1,0 +1,64 @@
+{
+	"Energias": [
+		{
+			"nombre": "Energia Lucha",
+			"tipo": "Lucha"
+		},
+		{
+			"nombre": "Energia Fuego",
+			"tipo": "Fuego"
+		},
+		{
+			"nombre": "Energia Planta",
+			"tipo": "Planta"
+		},
+		{
+			"nombre": "Energia Electricidad",
+			"tipo": "Electricidad"
+		},
+		{
+			"nombre": "Energia Psiquico",
+			"tipo": "Psiquico"
+		},
+		{
+			"nombre": "Energia Agua",
+			"tipo": "Agua"
+		}
+	],
+	"Trainers": [
+		{
+			"nombre": "Bill",
+			"palabraClave": "Robar",
+			"numeros": [
+				2
+			],
+			"descripcion": "Roba 2 cartas"
+		},
+		{
+			"nombre": "Pocion",
+			"palabraClave": "Curar",
+			"numeros": [
+				20
+			],
+			"descripcion": "Cura 20 puntos a 1 de tus Pokemon"
+		}
+	],
+	"Pokemons": [
+		{
+			"nombre": "Rattata",
+			"vidaMaxima": 30,
+			"tipo": "Incolora",
+			"costoRetirada": 1,
+			"debilidad": "Lucha",
+			"resistencia": "Psiquico",
+			"ataque1": {
+				"nombreAtaque": "Bite",
+				"costo": [
+					"Incolora"
+				],
+				"damage": 20
+			},
+			"ataque2": null
+		}
+	]
+}

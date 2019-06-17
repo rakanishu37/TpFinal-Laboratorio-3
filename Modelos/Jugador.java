@@ -257,7 +257,7 @@ public class Jugador {
 	/*
 	 * Logica de seleccion de ataque 
 	 */
-	public Ataque elegirAtaque() {
+	public Ataque elegirAtaque(int eleccion) {
 		/*
 		 * Primer boceto
 		 */
@@ -265,7 +265,12 @@ public class Jugador {
 			return getPokemonActivo().getAtaque1();
 		}
 		else {
-			//Logica de eleccion
+			if(eleccion == 1) {
+				return getPokemonActivo().getAtaque1();
+			}
+			else {
+				return getPokemonActivo().getAtaque2();
+			}
 		}
 		
 	}

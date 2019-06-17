@@ -5,9 +5,16 @@ import java.io.Serializable;
 public abstract class Carta implements Serializable
 {
 	//ultimoId va a contener el id disponbile
-	private static int idDisponible = 0;
+	private static int idDisponible = 1;
 	private int id;
 	private String nombre;
+
+	//Este constructor es para crear variables del tipo Energia pero que no afecte al indice de las cartas
+	public Carta() {
+		super();
+		setId(0);
+		setNombre("");
+	}
 	
 	public Carta(String nombre) 
 	{
@@ -30,11 +37,8 @@ public abstract class Carta implements Serializable
 		this.nombre = nombre;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
+	@Override
+	public String toString() {
+		return "id=" + id + "\nnombre=" + nombre+"\n";
+	}
 }

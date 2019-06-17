@@ -3,6 +3,15 @@ package Modelos;
 public class Energia extends Carta {
 	private String tipo; 
 
+	/**
+	 * Constructor para crear el costo de un ataque
+	 * @param tipo
+	 */
+	public Energia(String tipo) {
+		super();
+		setTipo(tipo);
+	}
+	
 	public Energia(String nombre, String tipo) {
 		super(nombre);
 		setTipo(tipo);		
@@ -28,5 +37,10 @@ public class Energia extends Carta {
 			}
 		}
 		return rta;
+	}
+	
+	@Override
+	public String toString() {
+		return super.toString()+"Tipo= " + tipo+"\n" ;
 	}
 }

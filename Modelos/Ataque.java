@@ -1,8 +1,9 @@
 package Modelos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Ataque {
+public class Ataque implements Serializable {
 	private String nombre;
 	private String tipo;
 	private ArrayList<Energia> costo;
@@ -93,5 +94,15 @@ public class Ataque {
 		} else {
 			return bandera;
 		}
+	}
+	
+	@Override
+	public String toString() {
+		String msg="nombre=" + nombre + "\ntipo=" + tipo + "\nEnergias necesarias:";
+		for(int i= 0; i< costo.size(); i++) {
+			msg+= costo.get(i).getTipo()+ " ";
+		}
+		msg+="\ndamage=" + damage ;
+		return msg;
 	}
 }
