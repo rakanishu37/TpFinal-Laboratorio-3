@@ -5,9 +5,9 @@ public class Trainer extends Carta
 	private String palabraClave;//Capas un arreglo y que se interprete afuera
 	private String descripcion;
 	private int [] numero;
-	public Trainer(String nombre, String Clave,int[] num, String descripcion) 
+	public Trainer(String id,String nombre, String Clave,int[] num, String descripcion) 
 	{
-		super(nombre);
+		super(id,nombre);
 		setPalabraClave(Clave);
 		setNumero(num);
 		setDescripcion(descripcion);

@@ -1,6 +1,7 @@
 package Modelos;
 
 import java.util.Iterator;
+
 import Exceptions.BancaLLenaException;
 import Exceptions.BancaVaciaException;
 
@@ -257,21 +258,44 @@ public class Jugador {
 	/*
 	 * Logica de seleccion de ataque 
 	 */
-	public Ataque elegirAtaque(int eleccion) {
+	public int elegirAtaque() {
 		/*
 		 * Primer boceto
 		 */
+		java.util.Scanner teclado= new java.util.Scanner(System.in);
+		int eleccion = 0;
+		System.out.println("Ingrese 1 para elegir el ataque 1");		
+		
 		if(getPokemonActivo().getAtaque2().equals(null)) {
-			return getPokemonActivo().getAtaque1();
+			System.out.println("Ingrese 2 para elegir el ataque 2");
+		}
+		
+		eleccion = teclado.nextInt();
+		
+		if(getPokemonActivo().getAtaque2().equals(null)) {
+			while(eleccion!=1) {
+				System.out.println("Ingresa 1");
+				eleccion = teclado.nextInt();
+			}
 		}
 		else {
-			if(eleccion == 1) {
-				return getPokemonActivo().getAtaque1();
-			}
-			else {
-				return getPokemonActivo().getAtaque2();
+			while(eleccion!= 1 || eleccion!= 2) {
+				System.out.println("Valor invalido, ingrese 1 o 2");
+				eleccion = teclado.nextInt();
 			}
 		}
 		
+		return eleccion;			
+	}
+	
+	public Ataque ataqueElegido(int eleccion) {
+		Ataque elegido=null;
+		if(eleccion ==1) {
+			elegido =getPokemonActivo().getAtaque1();
+		}
+		else {
+			elegido =getPokemonActivo().getAtaque2();
+		}
+		return elegido;
 	}
 }

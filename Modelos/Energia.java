@@ -12,8 +12,8 @@ public class Energia extends Carta {
 		setTipo(tipo);
 	}
 	
-	public Energia(String nombre, String tipo) {
-		super(nombre);
+	public Energia(String id,String nombre, String tipo) {
+		super(id,nombre);
 		setTipo(tipo);		
 	}
 

@@ -21,7 +21,7 @@ public class Mazo implements moverCarta<Carta> {
 
 	public Mazo(JSONArray composicionMazo) {
 		super();
-		cartas= crearMazo(composicionMazo);		
+		crearMazo(composicionMazo);		
 	}
 
 	private void setCartas(Vector<Carta> mazo) {
@@ -71,9 +71,9 @@ public class Mazo implements moverCarta<Carta> {
 	 * @param composicionMazo
 	 * @return mazo de cartas
 	 */
-	public Vector<Carta> crearMazo(JSONArray composicionMazo) {
+	private void crearMazo(JSONArray composicionMazo) {
 		Vector<Carta> nuevoMazo = new Vector<Carta>();		
-		HashMap<Integer, Carta> listaDeCartas = cargarListaDeCartas();
+		HashMap<String, Carta> listaDeCartas = cargarListaDeCartas();
 		
 		JSONObject cartaBuscada = null;
 		int idCartaBuscada=-1;
@@ -94,7 +94,7 @@ public class Mazo implements moverCarta<Carta> {
 			}
 		}
 		
-		return nuevoMazo;
+		setCartas(nuevoMazo);
 
 	}
 
@@ -116,19 +116,21 @@ public class Mazo implements moverCarta<Carta> {
 	 * @return un hashMap con todas las cartas existentes su clave es el id de la
 	 *         carta
 	 */
-	private HashMap<Integer, Carta> cargarListaDeCartas() {
+	private HashMap<String, Carta> cargarListaDeCartas() {
 
 		String archivoFuente = "listaDeCartas.dat";
 		ObjectInputStream ois = null;
-		HashMap<Integer, Carta> inventarioDeCartas = new HashMap<>();
+		HashMap<String, Carta> inventarioDeCartas = new HashMap<>();
 		try {
 			ois = new ObjectInputStream(new FileInputStream(archivoFuente));
 			Carta c1 = null;
+			
 			//Mientras haya objetos para leer dentro del objectInputStream
 			//lo agrego al hashmap con el id de la carta y la carta
+			
 			while ((c1 = (Carta) ois.readObject()) != null) {
 				inventarioDeCartas.put(c1.getId(), c1);
-			}
+			}			
 		} catch (EOFException eof) {
 			System.out.println("Fin de lectura del archivo.\n");
 		} catch (IOException e) {

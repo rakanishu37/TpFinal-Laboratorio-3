@@ -15,9 +15,9 @@ public class Pokemon extends Carta {
 	private Ataque ataque1;
 	private Ataque ataque2;
 
-	public Pokemon(String nombre, int vidaMaxima, String tipo, int retirada, String debilidad,String resistencia,
+	public Pokemon(String id,String nombre, int vidaMaxima, String tipo, int retirada, String debilidad,String resistencia,
 			Ataque ataque1, Ataque ataque2) {
-		super(nombre);
+		super(id,nombre);
 		setVidaMaxima(vidaMaxima);
 		setVidaActual(vidaMaxima);
 		setTipo(tipo);

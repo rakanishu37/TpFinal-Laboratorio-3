@@ -4,30 +4,27 @@ import java.io.Serializable;
 
 public abstract class Carta implements Serializable
 {
-	//ultimoId va a contener el id disponbile
-	private static int idDisponible = 1;
-	private int id;
+	private String id;
 	private String nombre;
 
 	//Este constructor es para crear variables del tipo Energia pero que no afecte al indice de las cartas
 	public Carta() {
 		super();
-		setId(0);
+		setId("");
 		setNombre("");
 	}
 	
-	public Carta(String nombre) 
+	public Carta(String id,String nombre) 
 	{
 		super();
-		setId(idDisponible);
-		idDisponible++;
+		setId(id);
 		setNombre(nombre);
 	}
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	private void setId(int id) {
+	private void setId(String id) {
 		this.id = id;
 	}
 	public String getNombre() {

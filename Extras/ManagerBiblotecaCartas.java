@@ -42,10 +42,11 @@ public class ManagerBiblotecaCartas {
 			for (int i = 0; i < listaDeEnergias.length(); i++) {
 				JSONObject elemento = listaDeEnergias.getJSONObject(i);
 
+				String id = elemento.getString("id");
 				String nombre = elemento.getString("nombre");
 				String tipo = elemento.getString("tipo");
 
-				Carta c = new Energia(nombre, tipo);
+				Carta c = new Energia(id,nombre, tipo);
 				listaDeCartas.add(c);
 			}
 		} catch (JSONException e) {
@@ -59,6 +60,8 @@ public class ManagerBiblotecaCartas {
 			for (int i = 0; i < listaDeTrainers.length(); i++) {
 				JSONObject elemento = listaDeTrainers.getJSONObject(i);
 
+				String id = elemento.getString("id");
+				
 				String nombre = elemento.getString("nombre");
 
 				String clave = elemento.getString("palabraClave");
@@ -72,7 +75,7 @@ public class ManagerBiblotecaCartas {
 
 				String descripcion = elemento.getString("descripcion");
 
-				Carta c = new Trainer(nombre, clave, num, descripcion);
+				Carta c = new Trainer(id, nombre, clave, num, descripcion);
 				listaDeCartas.add(c);
 			}
 		} catch (JSONException e) {
@@ -86,6 +89,7 @@ public class ManagerBiblotecaCartas {
 			for (int i = 0; i < listaDePokemons.length(); i++) {
 				JSONObject elemento = listaDePokemons.getJSONObject(i);
 				// Atributos del Pokemon
+				String id = elemento.getString("id");
 				String nombre = elemento.getString("nombre");
 				int vidaMaxima = elemento.getInt("vidaMaxima");
 				String tipo = elemento.getString("tipo");
@@ -121,7 +125,7 @@ public class ManagerBiblotecaCartas {
 					atk2 = new Ataque(nombreAtaque, tipo, costoAtk, damage);
 				}
 
-				Carta c = new Pokemon(nombre, vidaMaxima, tipo, costoRetirada, debilidad, resistencia, atk1, atk2);
+				Carta c = new Pokemon(id,nombre, vidaMaxima, tipo, costoRetirada, debilidad, resistencia, atk1, atk2);
 				listaDeCartas.add(c);
 			}
 		} catch (JSONException e) {
@@ -163,7 +167,7 @@ public class ManagerBiblotecaCartas {
 		coleccionAArchivo(listadoTemp);
 	}
 	
-	public static String listarCartas(HashMap<Integer,Carta> listaDeCartas) { 
+	public static String listarCartas(HashMap<String,Carta> listaDeCartas) { 
 		//Para recorrer el mapa
 			StringBuilder msg = new StringBuilder();
 			Iterator i = listaDeCartas.entrySet().iterator();
