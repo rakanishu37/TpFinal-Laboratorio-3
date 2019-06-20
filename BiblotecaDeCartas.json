@@ -17,7 +17,7 @@
 		},
 		{
 			"id": "base-4",
-			"nombre": "Energia Electricidad",
+			"nombre": "Energia Electrica",
 			"tipo": "Electrico"
 		},
 		{
@@ -580,6 +580,23 @@
 					"Incolora"
 				],
 				"damage": 20
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-35",
+			"nombre": "Pikachu",
+			"vidaMaxima": 50,
+			"tipo": "Electrico",
+			"costoRetirada": 1,
+			"debilidad": "Lucha",
+			"resistencia": "Psiquico",
+			"ataque1": {
+				"nombreAtaque": "Bite",
+				"costo": [
+					"Incolora"
+				],
+				"damage": 30
 			},
 			"ataque2": null
 		}		

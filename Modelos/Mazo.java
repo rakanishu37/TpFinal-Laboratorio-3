@@ -45,14 +45,17 @@ public class Mazo implements moverCarta<Carta> {
 	 * Mezcla el mazo
 	 */
 	public void mezclar() {
-		int cartasRestantes = MAX_CARTAS - 1;
+		int cartasRestantes = MAX_CARTAS;
+		int aux = 0;
 		Vector<Carta> temporal = new Vector<Carta>();
 		Random random = new Random();
-		while (cartasRestantes >= 0) {
+		while (cartasRestantes > 0) {
 			// Elijo una carta al azar entre 0 y las cartas restantes(39 porque 40 es
 			// posicion invalida)
 			// y decrementara hasta 0
-			temporal.add(cartas.get(random.nextInt(cartasRestantes)));
+			aux = random.nextInt(cartasRestantes);
+			temporal.add(cartas.get(aux));
+			cartas.remove(aux);
 			cartasRestantes--;
 		}
 		setCartas(temporal);
@@ -152,4 +155,11 @@ public class Mazo implements moverCarta<Carta> {
 		}
 		return inventarioDeCartas;
 	}
+
+	@Override
+	public String toString() {
+		return cartas.toString();
+	}
+	
+	
 }

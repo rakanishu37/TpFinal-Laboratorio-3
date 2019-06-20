@@ -18,7 +18,7 @@ public class Contenedor<T> implements moverCarta<T>,Iterable{
 		conjuntoDeElementos=new ArrayList<T>();
 	}
 
-	protected ArrayList<T> getElementos(){
+	public ArrayList<T> getElementos(){
 		return conjuntoDeElementos;
 	}
 	

@@ -6,6 +6,8 @@ import Modelos.Jugador;
 import Modelos.Mazo;
 import Modelos.Pokemon;
 import Modelos.Tablero;
+import sun.font.CreatedFontTracker;
+import Extras.*;
 
 import java.util.ArrayList;
 
@@ -17,6 +19,8 @@ import Extras.JsonUtiles;
 public class Main {
 
 	public static void main(String[] args) {		
+		
+//		ManagerBiblotecaCartas.crearArchivoFuente();
 		
 		JSONArray mazoJ1=null;
 		
@@ -34,15 +38,25 @@ public class Main {
 			System.out.println("Archivo json mal formateado");
 			e.printStackTrace();
 		}
-		
-		
+	
 		Jugador j1 = new Jugador( new Mazo(mazoJ1));
-		Jugador j2 = new Jugador( new Mazo(mazoJ2));
+		Jugador j2 = new Jugador( new Mazo(mazoJ1));
 		
+		j1.iniciarMano();
+		System.out.println(j1.getMano().getElementos());
+		System.out.println("asllalalalalalalsldfasduighseirou hvngsuieryvguerojyvureuogsryroesuivoreiuvruig");
+		System.out.println("asllalalalalalalsldfasduighseirou hvngsuieryvguerojyvureuogsryroesuivoreiuvruig");
+		System.out.println("asllalalalalalalsldfasduighseirou hvngsuieryvguerojyvureuogsryroesuivoreiuvruig");
+		j2.iniciarMano();
+		System.out.println(j2.getMano().getElementos());
+
+		
+		
+		/*
 		Tablero t= new Tablero(j1,j2);
 		
 		
 		t.jugar();
-
+*/
 	}
 }

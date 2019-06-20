@@ -93,6 +93,12 @@ public class Jugador {
 				rta = true;
 			}
 		}
+		if(rta == false)
+		{
+			for (int i = 1; i <= CANT_INICIAL_MANO; i++) {
+				getMazo().insertarCarta(getMano().extraerCarta(0));
+			}
+		}
 		return rta;
 	}
 

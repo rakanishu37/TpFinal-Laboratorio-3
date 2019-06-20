@@ -1,11 +1,46 @@
 [
 	{
-		"id": 123,
-		"cant": 3
+		"id": "base-2",
+		"cant": 8
 	},
 
 	{
-		"id": 123,
+		"id": "base-4",
+		"cant": 7	
+	},
+
+	{
+		"id": "base-7",
+		"cant": 5	
+	},
+
+	{
+		"id": "base-8",
+		"cant": 5
+	},
+
+	{
+		"id": "base-10",
 		"cant": 3	
+	},
+
+	{
+		"id": "base-26",
+		"cant": 2	
+	},
+
+	{
+		"id": "base-28",
+		"cant": 3	
+	},
+
+	{
+		"id": "base-31",
+		"cant": 2
+	},
+
+	{
+		"id": "base-35",
+		"cant": 5	
 	}
 ]
