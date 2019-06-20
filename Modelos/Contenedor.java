@@ -36,6 +36,10 @@ public class Contenedor<T> implements moverCarta<T>,Iterable{
 	}
 
 	
+	
+	public int cantElementos() {
+		return conjuntoDeElementos.size();
+	}
 
 	
 

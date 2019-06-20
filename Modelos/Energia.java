@@ -43,4 +43,11 @@ public class Energia extends Carta {
 	public String toString() {
 		return super.toString()+"Tipo= " + tipo+"\n" ;
 	}
+
+	public void serEquipada(Pokemon p) {
+		//Se invoca al equipar energia del pokemon p y se pasa este objeto invocante del metodo
+		//como parametro al equiparEnergia
+		
+		p.equiparEnergia(this);
+	}
 }

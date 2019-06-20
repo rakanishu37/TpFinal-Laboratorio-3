@@ -13,6 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import Exceptions.MazoVacioException;
 import Interfaces.moverCarta;
 
 public class Mazo implements moverCarta<Carta> {
@@ -61,8 +62,8 @@ public class Mazo implements moverCarta<Carta> {
 	 * 
 	 * @return true si el mazo ya no tiene cartas
 	 */
-	public boolean estaVacio() {
-		return cartas.isEmpty();
+	public void estaVacio() throws MazoVacioException{
+		throw new MazoVacioException("Te quedaste sin cartas campeon, perdiste por manco");
 	}
 
 	/**

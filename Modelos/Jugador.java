@@ -1,11 +1,15 @@
 package Modelos;
 
 import java.util.Iterator;
+import java.util.Scanner;
 
 import Exceptions.BancaLLenaException;
 import Exceptions.BancaVaciaException;
+import Exceptions.MazoVacioException;
 
 public class Jugador {
+	
+	// QUITAR EL SCANNER
 	private Mazo mazo;
 	private Contenedor<Carta> cementerio;
 	private Contenedor<Carta> premios;
@@ -110,11 +114,10 @@ public class Jugador {
 	}
 
 	/**
-	 * 
-	 * @return true si ya no quedan cartas en el mazo
+	 * @throws MazoVacioException si ya no quedan cartas en el mazo 
 	 */
-	public boolean mazoVacio() {
-		return getMazo().estaVacio();
+	public void mazoVacio() throws MazoVacioException {
+		getMazo().estaVacio();
 	}
 
 	/**
@@ -211,16 +214,19 @@ public class Jugador {
 		return rta;
 	}
 
+
+
 	/**
 	 * 
 	 * @param posicion es el lugar (un valor entero) donde se encuentra en mi mano
 	 *                 la carta pokemon a bajar en la banca
 	 * @throws BancaLLenaException si la banca fuera a estar llena
 	 */
-	public void bajarPokemonABanca(int posicion) throws BancaLLenaException {
+/*	public void bajarPokemonABanca(int posicion) throws BancaLLenaException {
 		Pokemon pkm = (Pokemon) getMano().extraerCarta(posicion);
 		agregarPokemonBanca(pkm);
 	}
+	*/
 
 	/**
 	 * 
@@ -258,11 +264,11 @@ public class Jugador {
 	/*
 	 * Logica de seleccion de ataque 
 	 */
-	public int elegirAtaque() {
+	public int elegirAtaque(Scanner teclado) {
 		/*
 		 * Primer boceto
 		 */
-		java.util.Scanner teclado= new java.util.Scanner(System.in);
+		
 		int eleccion = 0;
 		System.out.println("Ingrese 1 para elegir el ataque 1");		
 		

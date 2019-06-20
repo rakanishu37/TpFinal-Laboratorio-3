@@ -4,8 +4,8 @@ public class Trainer extends Carta
 {
 	private String palabraClave;//Capas un arreglo y que se interprete afuera
 	private String descripcion;
-	private int [] numero;
-	public Trainer(String id,String nombre, String Clave,int[] num, String descripcion) 
+	private int numero;
+	public Trainer(String id,String nombre, String Clave,int num, String descripcion) 
 	{
 		super(id,nombre);
 		setPalabraClave(Clave);
@@ -23,12 +23,12 @@ public class Trainer extends Carta
 		palabraClave = Clave;
 	}
 
-	public int[] getNumero() 
+	public int getNumero() 
 	{
 		return numero;
 	}
 	
-	private void setNumero(int[] num)
+	private void setNumero(int num)
 	{
 		numero = num;
 	}
@@ -43,20 +43,11 @@ public class Trainer extends Carta
 		descripcion = texto;
 	}
 	
-	/*menu que haga los controles
-	public void usar()
-	{		
-	}
-	 */
 	
 	@Override
 	public String toString() {
-		int[] num = getNumero();
-		String msg= "Trainer\n"+super.toString()+ "palabraClave=" + palabraClave + "\nnumero="; 
-		for(int i= 0; i< num.length; i++) {
-			msg+= num[i]+ " ";
-		}
-		msg+="\ndescripcion=" + descripcion + "\n";
-		return msg;
+		return"Trainer\n"+super.toString()+ "palabraClave=" + palabraClave + "\nnumero=" + numero
+		+ "\ndescripcion=" + descripcion + "\n";
+		
 	}
 }
