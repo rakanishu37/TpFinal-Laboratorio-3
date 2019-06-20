@@ -45,9 +45,10 @@ public class Tablero {
 	}
 
 	public void jugar() {
+		Carta c = null;		
+		j1.iniciarMano();
+		j2.iniciarMano();
 		jugadorAtacante = j1;
-
-		Carta c = null;
 		jugadorDefensor = j2;
 
 		while (!ganador) {

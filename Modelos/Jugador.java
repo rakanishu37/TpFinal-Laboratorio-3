@@ -100,7 +100,7 @@ public class Jugador {
 	 * Crea una mano valida(con al menos un pokemon)
 	 */
 	public void iniciarMano() {
-
+		cargarMano();
 		while (manoValida(getMano()) == false) {
 			cargarMano();
 		}
