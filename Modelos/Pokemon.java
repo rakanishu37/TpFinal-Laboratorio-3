@@ -2,6 +2,7 @@
 package Modelos;
 
 import java.util.ArrayList;
+import Exceptions.*;
 
 public class Pokemon extends Carta {
 
@@ -81,16 +82,26 @@ public class Pokemon extends Carta {
 		resistencia = resist;
 	}
 
-	public Ataque getAtaque1() {
-		return ataque1;
+	public Ataque getAtaque1() throws NoPuedeAtacarException {
+		if(!ataque1.comprobarEnergia(getEnergiasEquipadas())){
+			throw new NoPuedeAtacarException("No tiene energia suficiente para elegir el ataque");
+		}
+		else {
+			return ataque1;
+		}
 	}
 
 	private void setAtaque1(Ataque ataque) {
 		ataque1 = ataque;
 	}
 
-	public Ataque getAtaque2() {
-		return ataque2;
+	public Ataque getAtaque2() throws NoPuedeAtacarException {
+		if(!ataque2.comprobarEnergia(getEnergiasEquipadas())){
+			throw new NoPuedeAtacarException("No tiene energia suficiente para elegir el ataque");
+		}
+		else {
+			return ataque2;
+		}
 	}
 
 	private void setAtaque2(Ataque ataque) {
@@ -125,8 +136,10 @@ public class Pokemon extends Carta {
 		int vidaPerdida=0;
 		String tipoDelAtaque = ataque.getTipo();
 		int dmg= ataque.getDamage();
+		
 		if (tipoDelAtaque.equals(getDebilidad()))
 			vidaPerdida= dmg*2;
+		
 		else {
 			if (tipoDelAtaque.equals(getResistencia())) {
 				if(dmg-30 > 0) {
@@ -138,6 +151,7 @@ public class Pokemon extends Carta {
 		if(nuevaVida < 0) {
 			nuevaVida=0;
 		}
+		
 		setVidaActual(nuevaVida);
 	}
 	
@@ -156,6 +170,34 @@ public class Pokemon extends Carta {
 			setVidaActual(nuevaVida);
 		}
 	}
+	
+	public boolean puedePagarCostoRetirada(){
+		boolean rta = true;
+		int equipadas = getEnergiasEquipadas().size();
+		int costoRetirada = getCostoRetirada();
+		if(equipadas< costoRetirada) {
+			rta =false;			
+		}
+		return rta;
+	}
+
+	public boolean estaIncapacitado() {
+		boolean rta= false;
+		if(getVidaActual()==0) {
+			rta = true;
+		}
+		return rta;
+	}
+	
+
+	public boolean tieneSegundoAtaque() {
+		boolean rta = false;
+		if(ataque2!=null) {
+			rta = true;
+		}
+		return rta;
+	}
+	
 	@Override
 	public String toString() {
 		String msg= "Pokemon\n"+ super.toString()
@@ -166,7 +208,7 @@ public class Pokemon extends Carta {
 				+ "\nenergiasEquipadas= " + energiasEquipadas.toString() 
 				+ "\ndebilidad= " + debilidad
 				+ "\nresistencia= " + resistencia 
-				+"\n------ataque1------\n" + getAtaque1().toString() 
+				+"\n------ataque1------\n" + ataque1.toString() 
 				+"\n-------------------\n";
 		if(ataque2!=(null)) {
 			msg+= "\n------ataque2------\n" + ataque2.toString()

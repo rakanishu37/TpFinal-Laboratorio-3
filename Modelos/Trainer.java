@@ -46,8 +46,7 @@ public class Trainer extends Carta
 	
 	@Override
 	public String toString() {
-		return"Trainer\n"+super.toString()+ "palabraClave=" + palabraClave + "\nnumero=" + numero
-		+ "\ndescripcion=" + descripcion + "\n";
+		return"Trainer\n"+super.toString()+ "descripcion= " + descripcion + "\n";
 		
 	}
 }

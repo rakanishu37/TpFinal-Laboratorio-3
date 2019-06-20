@@ -68,8 +68,6 @@ public class ManagerBiblotecaCartas {
 
 				int num = elemento.getInt("numeros");
 
-				
-
 				String descripcion = elemento.getString("descripcion");
 
 				Carta c = new Trainer(id, nombre, clave, num, descripcion);

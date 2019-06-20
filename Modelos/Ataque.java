@@ -49,21 +49,13 @@ public class Ataque implements Serializable {
 		this.damage = damage;
 	}
 
-	/**
-	 * 
-	 * @param energiaEquipada la energia equipada del pokemon
-	 * @return true si tiene la energia para usar el ataque
-	 */
-	public boolean puedeAtacar(ArrayList<Energia> energiaEquipada) {
-		return comprobarEnergia(energiaEquipada);
-	}
 
 	/**
 	 * 
 	 * @param energiaEquipada del pokemon
 	 * @return true si tiene las energias suficientes para pagar el costo
 	 */
-	private boolean comprobarEnergia(ArrayList<Energia> energiaEquipada) {
+	public boolean comprobarEnergia(ArrayList<Energia> energiaEquipada) {
 		boolean bandera = true;
 		boolean banderaIncolora = false;
 		if (energiaEquipada.size() < costo.size()) {

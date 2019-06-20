@@ -18,6 +18,10 @@ public class Contenedor<T> implements moverCarta<T>,Iterable{
 		conjuntoDeElementos=new ArrayList<T>();
 	}
 
+	protected ArrayList<T> getElementos(){
+		return conjuntoDeElementos;
+	}
+	
 	@Override
 	public void insertarCarta(T carta) {
 		
@@ -25,8 +29,7 @@ public class Contenedor<T> implements moverCarta<T>,Iterable{
 	}
 
 	@Override
-	public T extraerCarta(int indice) {
-		
+	public T extraerCarta(int indice) {	
 		return conjuntoDeElementos.remove(indice);
 	}
 
@@ -35,12 +38,9 @@ public class Contenedor<T> implements moverCarta<T>,Iterable{
 		return conjuntoDeElementos.iterator();
 	}
 
-	
-	
 	public int cantElementos() {
 		return conjuntoDeElementos.size();
 	}
 
-	
 
 }

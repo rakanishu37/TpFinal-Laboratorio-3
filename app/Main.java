@@ -1,9 +1,13 @@
 package app;
 
+import Modelos.Ataque;
+import Modelos.Energia;
 import Modelos.Jugador;
 import Modelos.Mazo;
+import Modelos.Pokemon;
 import Modelos.Tablero;
 
+import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,7 +43,6 @@ public class Main {
 		
 		
 		t.jugar();
-		
-	}
 
+	}
 }

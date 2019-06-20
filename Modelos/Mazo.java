@@ -46,7 +46,7 @@ public class Mazo implements moverCarta<Carta> {
 	 */
 	public void mezclar() {
 		int cartasRestantes = MAX_CARTAS - 1;
-		Vector<Carta> temporal = null;
+		Vector<Carta> temporal = new Vector<Carta>();
 		Random random = new Random();
 		while (cartasRestantes >= 0) {
 			// Elijo una carta al azar entre 0 y las cartas restantes(39 porque 40 es
@@ -62,8 +62,12 @@ public class Mazo implements moverCarta<Carta> {
 	 * 
 	 * @return true si el mazo ya no tiene cartas
 	 */
-	public void estaVacio() throws MazoVacioException{
-		throw new MazoVacioException("Te quedaste sin cartas campeon, perdiste por manco");
+	public boolean estaVacio() {
+		boolean rta = false;
+		if(cartas.size()==0) {
+			rta = true;
+		}
+		return rta;
 	}
 
 	/**
@@ -75,15 +79,15 @@ public class Mazo implements moverCarta<Carta> {
 	private void crearMazo(JSONArray composicionMazo) {
 		Vector<Carta> nuevoMazo = new Vector<Carta>();		
 		HashMap<String, Carta> listaDeCartas = cargarListaDeCartas();
-		
+		Carta aux = null;
 		JSONObject cartaBuscada = null;
-		int idCartaBuscada=-1;
+		String idCartaBuscada="";
 		int cantCopias=0;
 		
 		for(int i= 0; i < composicionMazo.length(); i++) {
 			try {
 				cartaBuscada = composicionMazo.getJSONObject(i);
-				idCartaBuscada = cartaBuscada.getInt("id");
+				idCartaBuscada = cartaBuscada.getString("id");
 				cantCopias = cartaBuscada.getInt("cant");
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -91,7 +95,8 @@ public class Mazo implements moverCarta<Carta> {
 			
 			//Repito tantas veces como copias se requiera
 			for(int j=1; j<=cantCopias;j++) {
-				nuevoMazo.add(listaDeCartas.get(idCartaBuscada));
+				aux = buscarCarta(listaDeCartas, idCartaBuscada);
+				nuevoMazo.add(aux);
 			}
 		}
 		
@@ -105,7 +110,7 @@ public class Mazo implements moverCarta<Carta> {
 	 * @param id
 	 * @return carta buscada
 	 */
-	private Carta buscarCarta(HashMap<Integer, Carta> listaDeCartas, int id) {
+	private Carta buscarCarta(HashMap<String, Carta> listaDeCartas, String id) {
 		Carta carta = null;
 		carta = listaDeCartas.get(id);
 		return carta;

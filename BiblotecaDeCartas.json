@@ -526,7 +526,7 @@
 			"ataque1": {
 				"nombreAtaque": "Envite Espinoso",
 				"costo": [
-					"Agua""Incolora"
+					"Agua","Incolora"
 				],
 				"damage": 20
 			},
