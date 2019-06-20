@@ -66,12 +66,9 @@ public class ManagerBiblotecaCartas {
 
 				String clave = elemento.getString("palabraClave");
 
-				JSONArray numeros = elemento.getJSONArray("numeros");
+				int num = elemento.getInt("numeros");
 
-				int[] num = new int[numeros.length()];
-				for (int j = 0; j < numeros.length(); j++) {
-					num[j] = numeros.getInt(j);
-				}
+				
 
 				String descripcion = elemento.getString("descripcion");
 

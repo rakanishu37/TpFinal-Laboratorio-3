@@ -1,50 +1,573 @@
 {
 	"Energias": [
 		{
+			"id": "base-1",
 			"nombre": "Energia Lucha",
 			"tipo": "Lucha"
 		},
 		{
+			"id": "base-2",
 			"nombre": "Energia Fuego",
 			"tipo": "Fuego"
 		},
 		{
+			"id": "base-3",
 			"nombre": "Energia Planta",
 			"tipo": "Planta"
 		},
 		{
+			"id": "base-4",
 			"nombre": "Energia Electricidad",
-			"tipo": "Electricidad"
+			"tipo": "Electrico"
 		},
 		{
+			"id": "base-5",
 			"nombre": "Energia Psiquico",
 			"tipo": "Psiquico"
 		},
 		{
+			"id": "base-6",
 			"nombre": "Energia Agua",
 			"tipo": "Agua"
 		}
 	],
 	"Trainers": [
 		{
+			"id": "base-7",
 			"nombre": "Bill",
-			"palabraClave": "Robar",
-			"numeros": [
-				2
-			],
+			"palabraClave": "ROBAR",
+			"numeros": 2,
 			"descripcion": "Roba 2 cartas"
 		},
 		{
+			"id": "base-8",
 			"nombre": "Pocion",
-			"palabraClave": "Curar",
-			"numeros": [
-				20
-			],
+			"palabraClave": "CURAR",
+			"numeros": 20,
 			"descripcion": "Cura 20 puntos a 1 de tus Pokemon"
 		}
 	],
 	"Pokemons": [
 		{
+			"id": "base-9",
+			"nombre": "Lapras",
+			"vidaMaxima": 120,
+			"tipo": "Agua",
+			"costoRetirada": 2,
+			"debilidad": "Planta",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Chapoteo Agua",
+				"costo": [
+					"Agua",
+					"Agua",
+					"Incolora"
+				],
+				"damage": 80
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-10",
+			"nombre": "Porygon",
+			"vidaMaxima": 60,
+			"tipo": "Incolora",
+			"costoRetirada": 1,
+			"debilidad": "Lucha",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Afilar",
+				"costo": [
+					"Incolora",
+					"Incolora"
+				],
+				"damage": 20
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-11",
+			"nombre": "Articuno",
+			"vidaMaxima": 120,
+			"tipo": "Agua",
+			"costoRetirada": 1,
+			"debilidad": "Planta",
+			"resistencia": "Lucha",
+			"ataque1": {
+				"nombreAtaque": "Viento Gélido",
+				"costo": [
+					"Agua",
+					"Agua",
+					"Incolora",
+					"Incolora"
+				],
+				"damage": 100
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-12",
+			"nombre": "Eevee",
+			"vidaMaxima": 60,
+			"tipo": "Incolora",
+			"costoRetirada": 1,
+			"debilidad": "Lucha",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Placaje",
+				"costo": [
+					"Incolora"
+				],
+				"damage": 10
+			},
+			"ataque2": {
+				"nombreAtaque": "Embestida",
+				"costo": [
+					"Incolora",
+					"Incolora"
+				],
+				"damage": 30
+			}
+		},
+		{
+			"id": "base-13",
+			"nombre": "Magikarp",
+			"vidaMaxima": 30,
+			"tipo": "Agua",
+			"costoRetirada": 1,
+			"debilidad": "Electrico",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Salpicadura Épica",
+				"costo": [
+					"Agua"
+				],
+				"damage": 10
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-14",
+			"nombre": "Psyduck",
+			"vidaMaxima": 60,
+			"tipo": "Agua",
+			"costoRetirada": 1,
+			"debilidad": "Planta",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Estampida",
+				"costo": [
+					"Incolora",
+					"Incolora"
+				],
+				"damage": 20
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-15",
+			"nombre": "Doduo",
+			"vidaMaxima": 60,
+			"tipo": "Incolora",
+			"costoRetirada": 1,
+			"debilidad": "Electrico",
+			"resistencia": "Lucha",
+			"ataque1": {
+				"nombreAtaque": "Doble Puñalada",
+				"costo": [
+					"Incolora"
+				],
+				"damage": 20
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-16",
+			"nombre": "Goldeen",
+			"vidaMaxima": 60,
+			"tipo": "Agua",
+			"costoRetirada": 1,
+			"debilidad": "Planta",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Carga",
+				"costo": [
+					"Incolora"
+				],
+				"damage": 20
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-17",
+			"nombre": "Kangaskhan",
+			"vidaMaxima": 100,
+			"tipo": "Incolora",
+			"costoRetirada": 2,
+			"debilidad": "Lucha",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Puño Cometa",
+				"costo": [
+					"Incolora",
+					"Incolora"
+				],
+				"damage": 40
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-18",
+			"nombre": "Meowth",
+			"vidaMaxima": 70,
+			"tipo": "Incolora",
+			"costoRetirada": 1,
+			"debilidad": "Lucha",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Arañazo Doble",
+				"costo": [
+					"Incolora"
+				],
+				"damage": 20
+			},
+			"ataque2": {
+				"nombreAtaque": "Patada Gato",
+				"costo": [
+					"Incolora",
+					"Incolora"
+				],
+				"damage": 40
+			}
+		},
+		{
+			"id": "base-19",
+			"nombre": "Jigglypuff",
+			"vidaMaxima": 70,
+			"tipo": "Incolora",
+			"costoRetirada": 2,
+			"debilidad": "Lucha",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Doble Bofeton",
+				"costo": [
+					"Incolora",
+					"Incolora"
+				],
+				"damage": 20
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-20",
+			"nombre": "Meowth",
+			"vidaMaxima": 70,
+			"tipo": "Incolora",
+			"costoRetirada": 1,
+			"debilidad": "Lucha",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Arañazo Doble",
+				"costo": [
+					"Incolora"
+				],
+				"damage": 20
+			},
+			"ataque2": {
+				"nombreAtaque": "Patada Gato",
+				"costo": [
+					"Incolora",
+					"Incolora"
+				],
+				"damage": 40
+			}
+		},
+		{
+			"id": "base-21",
+			"nombre": "Caterpie",
+			"vidaMaxima": 40,
+			"tipo": "Planta",
+			"costoRetirada": 1,
+			"debilidad": "Fuego",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Garfio",
+				"costo": [
+					"Incolora",
+					"Incolora"
+				],
+				"damage": 10
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-22",
+			"nombre": "Clefairy",
+			"vidaMaxima": 60,
+			"tipo": "Incolora",
+			"costoRetirada": 1,
+			"debilidad": "Lucha",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Doble Bofeton",
+				"costo": [
+					"Incolora"
+				],
+				"damage": 20
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-23",
+			"nombre": "Mewtwo",
+			"vidaMaxima": 70,
+			"tipo": "Psiquico",
+			"costoRetirada": 2,
+			"debilidad": "Psiquico",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Quemadura Psiquica",
+				"costo": [
+					"Psiquica",
+					"Psiquica",
+					"Incolora"
+				],
+				"damage": 40
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-23",
+			"nombre": "Tauros",
+			"vidaMaxima": 60,
+			"tipo": "Incolora",
+			"costoRetirada": 2,
+			"debilidad": "Lucha",
+			"resistencia": "Psiquico",
+			"ataque1": {
+				"nombreAtaque": "Pisotón",
+				"costo": [
+					"Incolora",
+					"Incolora"
+				],
+				"damage": 30
+			},
+			"ataque2": {
+				"nombreAtaque": "Destrozar",
+				"costo": [
+					"Incolora",
+					"Incolora",
+					"Incolora"
+				],
+				"damage": 50
+			}
+		},
+		{
+			"id": "base-24",
+			"nombre": "Geodude de Brock",
+			"vidaMaxima": 50,
+			"tipo": "Lucha",
+			"costoRetirada": 1,
+			"debilidad": "Planta",
+			"resistencia": "Incolora",
+			"ataque1": {
+				"nombreAtaque": "Lanzarroca",
+				"costo": [
+					"Luchar"
+				],
+				"damage": 20
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-25",
+			"nombre": "Bulbasaur",
+			"vidaMaxima": 40,
+			"tipo": "Planta",
+			"costoRetirada": 1,
+			"debilidad": "Fuego",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Drenadoras",
+				"costo": [
+					"Planta",
+					"Planta"
+				],
+				"damage": 20
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-26",
+			"nombre": "Ponyta",
+			"vidaMaxima": 40,
+			"tipo": "Fuego",
+			"costoRetirada": 1,
+			"debilidad": "Agua",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Patada Destructora",
+				"costo": [
+					"Incolora",
+					"Incolora"
+				],
+				"damage": 20
+			},
+			"ataque2": {
+				"nombreAtaque": "Cola de fuego",
+				"costo": [
+					"Fuego",
+					"Fuego"
+				],
+				"damage": 30
+			}
+		},
+		{
+			"id": "base-27",
+			"nombre": "Poliwag",
+			"vidaMaxima": 50,
+			"tipo": "Agua",
+			"costoRetirada": 1,
+			"debilidad": "Electrico",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Chapoteo ondulante",
+				"costo": [
+					"Agua"
+				],
+				"damage": 10
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-28",
+			"nombre": "Vulpix",
+			"vidaMaxima": 50,
+			"tipo": "Fuego",
+			"costoRetirada": 1,
+			"debilidad": "Agua",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Fuego Fatuo",
+				"costo": [
+					"Fuego",
+					"Incolora"
+				],
+				"damage": 20
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-29",
+			"nombre": "Mankey",
+			"vidaMaxima": 50,
+			"tipo": "Lucha",
+			"costoRetirada": 1,
+			"debilidad": "Psiquico",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Patada Baja",
+				"costo": [
+					"Lucha"
+				],
+				"damage": 20
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-30",
+			"nombre": "Wooper",
+			"vidaMaxima": 50,
+			"tipo": "Lucha",
+			"costoRetirada": 1,
+			"debilidad": "Planta",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Disparo Lodo",
+				"costo": [
+					"Incolora"
+				],
+				"damage": 10
+			},
+			"ataque2": {
+				"nombreAtaque": "Coletón",
+				"costo": [
+					"Incolora",
+					"Incolora"
+				],
+				"damage": 20
+			}
+		},
+		{
+			"id": "base-31",
+			"nombre": "Slugma",
+			"vidaMaxima": 40,
+			"tipo": "Fuego",
+			"costoRetirada": 1,
+			"debilidad": "Agua",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Golpe Cabeza",
+				"costo": [
+					"Incolora"
+				],
+				"damage": 10
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-32",
+			"nombre": "Corsola",
+			"vidaMaxima": 70,
+			"tipo": "Agua",
+			"costoRetirada": 1,
+			"debilidad": "Planta",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Envite Espinoso",
+				"costo": [
+					"Agua""Incolora"
+				],
+				"damage": 20
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-33",
+			"nombre": "Cubone",
+			"vidaMaxima": 60,
+			"tipo": "Lucha",
+			"costoRetirada": 1,
+			"debilidad": "Planta",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Toque",
+				"costo": [
+					"Incolora"
+				],
+				"damage": 10
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-34",
+			"nombre": "Diglett",
+			"vidaMaxima": 50,
+			"tipo": "Lucha",
+			"costoRetirada": 1,
+			"debilidad": "Planta",
+			"resistencia": "",
+			"ataque1": {
+				"nombreAtaque": "Garfio",
+				"costo": [
+					"Lucha"
+				],
+				"damage": 10
+			},
+			"ataque2": null
+		},
+		{
+			"id": "base-35",
 			"nombre": "Rattata",
 			"vidaMaxima": 30,
 			"tipo": "Incolora",
@@ -59,6 +582,6 @@
 				"damage": 20
 			},
 			"ataque2": null
-		}
+		}		
 	]
 }
