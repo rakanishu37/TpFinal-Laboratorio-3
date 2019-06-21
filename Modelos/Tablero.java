@@ -69,10 +69,13 @@ public class Tablero {
 
 			} catch (MazoVacioException e) {
 				System.out.println(e.getMessage());
+				ganador=true;
 			} catch (BancaVaciaException e) {
 				System.out.println(e.getMessage());
+				ganador=true;
 			} catch (PremiosVacioException e) {
 				System.out.println(e.getMessage());
+				ganador=true;
 			}
 
 		}
@@ -366,7 +369,7 @@ public class Tablero {
 		System.out.println("Ingrese un valor entre 1 y "+ pokemonsDisponibles.size()+" para elegir a su primer pokemon");
 		int opcion = teclado.nextInt()-1;
 		
-		while(opcion<0 && opcion >pokemonsDisponibles.size()) {
+		while(opcion<0 || opcion >=pokemonsDisponibles.size()) {
 			System.out.println("Valor incorrecto\nIngrese un valor entre 1 y "+ pokemonsDisponibles.size()+" para elegir a su primer pokemon");
 			opcion = teclado.nextInt()-1;
 		}

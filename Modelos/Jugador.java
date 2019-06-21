@@ -291,7 +291,7 @@ public class Jugador {
 		Contenedor<Carta> auxMano = getMano();
 		System.out.println("Ingrese un numero entre 1 y " + auxMano.cantElementos()+" para jugar una carta");
 		indice = teclado.nextInt() - 1;
-		while (indice < 0 || indice > auxMano.cantElementos()) {
+		while (indice < 0 || indice >= auxMano.cantElementos()) {
 			System.out.println("Valor invalido\nIngrese un numero entre 1 y " + auxMano.cantElementos()+" para jugar una carta");
 			indice = teclado.nextInt() - 1;
 		}
@@ -310,7 +310,7 @@ public class Jugador {
 		System.out.println("Ingrese un numero entre 1 y " + +energiasEquipadas.size()+"para elegir la energia");
 		indice = teclado.nextInt() - 1;
 
-		while (indice < 0 && indice > energiasEquipadas.size()) {
+		while (indice < 0 || indice >= energiasEquipadas.size()) {
 			System.out.println("Valor invalido\nIngrese un numero entre 1 y " + energiasEquipadas.size()+"para elegir la energia");
 			indice = teclado.nextInt() - 1;
 		}
@@ -333,7 +333,7 @@ public class Jugador {
 		System.out.println("Ingrese un numero entre 1 y " + tam+"para seleccionar a un pokemon de la banca");
 		eleccion = teclado.nextInt() - 1;
 
-		while (eleccion < 0 || eleccion > tam) {
+		while (eleccion < 0 || eleccion >= tam) {
 			System.out.println("Valor incorrecto");
 			System.out.println("Ingrese un numero entre 1 y " + tam+"para seleccionar a un pokemon de la banca");
 			eleccion = teclado.nextInt() - 1;
@@ -359,7 +359,7 @@ public class Jugador {
 		
 		System.out.println("Ingrese un numero entre 1 y " + listaPokemones.size()+" para elegir alguno de los pokemones");
 		int indice = teclado.nextInt() - 1;
-		while (indice < 0 && indice > listaPokemones.size()) {
+		while (indice < 0 || indice >= listaPokemones.size()) {
 			System.out.println("Valor invalido");
 			System.out.println("Ingrese un numero entre 1 y " + listaPokemones.size()+" para elegir alguno de los pokemones");
 			indice = teclado.nextInt() - 1;

@@ -14,7 +14,7 @@ public class Teclado {
 	
 	public static void next() {
 		
-		s.nextLine();
+		s.next();
 		
 		
 		

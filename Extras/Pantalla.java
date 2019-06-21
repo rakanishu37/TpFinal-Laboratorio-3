@@ -8,16 +8,16 @@ public class Pantalla {
 
 	public static void mostrarPorPantalla(String s) {
 		System.out.println(s);
-		System.out.println("\n");
 		
-		System.out.println("Toque la barra espaciadore y luego Enter para continuar");
+		
+		System.out.println("Presione una tecla y luego enter");
 		
 		Teclado.next();
 	}
 	public static<T extends Carta> void mostrarRecurso(ArrayList<T> c1) {
 		
 		for(T c :c1) {
-			System.out.println(c.toString());
+			mostrarPorPantalla((c.toString()));
 		}
 	}
 }
