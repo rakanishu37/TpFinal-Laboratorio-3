@@ -15,11 +15,13 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import Exceptions.BancaVaciaException;
+import Exceptions.PremiosVacioException;
 import Extras.JsonUtiles;
 
 public class Main {
 
-	public static void main(String[] args) {		
+	public static void main(String[] args) throws  PremiosVacioException {		
 		
 		ManagerBiblotecaCartas.crearArchivoFuente();
 		
@@ -45,10 +47,10 @@ public class Main {
 		/*j1.mezclarMazo();
 		j1.cargarPremios();
 		*/
+	
+		Tablero t= new Tablero(j1,j2);				
 		
-		
-		Tablero t= new Tablero(j1,j2);		
+	
 		t.jugar();
-
 	}
 }

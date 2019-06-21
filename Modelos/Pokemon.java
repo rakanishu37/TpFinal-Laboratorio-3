@@ -175,11 +175,13 @@ public class Pokemon extends Carta {
 				if(dmg-30 > 0) {
 					vidaPerdida= dmg-30;
 				}				
+
 			}else
 	        {
 	            vidaPerdida = dmg;
 	        }
 		
+
 		}
 		int nuevaVida= getVidaActual() - vidaPerdida;
 		if(nuevaVida < 0) {

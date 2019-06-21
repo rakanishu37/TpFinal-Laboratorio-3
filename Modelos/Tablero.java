@@ -66,6 +66,7 @@ public class Tablero {
 				robarCarta();
 				menu();
 				cambiarTurno();
+
 			} catch (MazoVacioException e) {
 				System.out.println(e.getMessage());
 			} catch (BancaVaciaException e) {
@@ -73,7 +74,7 @@ public class Tablero {
 			} catch (PremiosVacioException e) {
 				System.out.println(e.getMessage());
 			}
-			
+
 		}
 	}
 
@@ -326,6 +327,7 @@ public class Tablero {
 	 * @throws BancaVaciaException si el jugador defensor se quedo sin pokemones en campo y perdio
 	 * @throws PremiosVacioException si el jugador atacante gano al quedarse sin premios
 	 */
+	
 	private void resolverCombate(Ataque ataque, Pokemon defensor) throws BancaVaciaException, PremiosVacioException {
 		defensor.decrementarVida(ataque);
 		if (defensor.estaIncapacitado()) {
