@@ -39,11 +39,19 @@ public class Energia extends Carta {
 		return rta;
 	}
 	
+	public String mostrarInfoReducido() {
+		return getTipo(); 
+	}
+	
 	@Override
 	public String toString() {
-		return super.toString()+"Tipo= " + tipo+"\n" ;
+		return "Energia\n"+super.toString()+"Tipo: " + getTipo()+"\n" ;
 	}
 
+	/**
+	 * Equipa al pokemon objetivo con esta energia 
+	 * @param p 
+	 */
 	public void serEquipada(Pokemon p) {
 		//Se invoca al equipar energia del pokemon p y se pasa este objeto invocante del metodo
 		//como parametro al equiparEnergia

@@ -49,52 +49,65 @@ public class Ataque implements Serializable {
 		this.damage = damage;
 	}
 
-
 	/**
 	 * 
-	 * @param energiaEquipada del pokemon
+	 * @param energiaEquipada la energia equipadas por el pokemon
 	 * @return true si tiene las energias suficientes para pagar el costo
 	 */
 	public boolean comprobarEnergia(ArrayList<Energia> energiaEquipada) {
 		boolean bandera = true;
 		boolean banderaIncolora = false;
-		if (energiaEquipada.size() < costo.size()) {
+		ArrayList<Energia> auxCosto = getCosto();
+		// Variable auxiliar
+		Energia auxEnergia = null;
+		// Verifico si la cantidad de elementos de energiaEquipada es menor que la
+		// cantidad de elementos del costo
+		if (energiaEquipada.size() < auxCosto.size()) {
 			bandera = false;
-		}
-		if (bandera) {
-			int i = 0;
+		} 
+		else {
+			if (bandera) {
+				int i = 0;
+				// se copia las energias equipadas al temporal
+				ArrayList<Energia> temporal = energiaEquipada;
+				//Recorro la coleccion costo preguntando si el elemento i esta en las energia equipadas
 
-			ArrayList<Energia> temporal = energiaEquipada;// se copia las energias equipadas al temporal
-			while (i < costo.size() && bandera == true) {
-
-				if (costo.get(i).equals("Incoloro")) {
-					banderaIncolora = true;
-				}
-
-				if (banderaIncolora == false) {
-					if (temporal.contains(costo.get(i))) {
-						temporal.remove(costo.get(i));
+				//En caso de que no este corta el ciclo y significa que no tiene las energias
+				//para ejecutar este ataque
+				while (i < auxCosto.size() && bandera == true) {
+					
+					auxEnergia = auxCosto.get(i);
+					if (auxEnergia.getTipo().equals("Incolora")) {
+						banderaIncolora = true;
 					}
-					i++;
-				} else {
-					bandera = false;
+
+					if (banderaIncolora == false) {
+						if (temporal.contains(auxEnergia)) {
+							temporal.remove(auxEnergia);
+						}
+						i++;
+					} 
+					else {
+						bandera = false;
+					}
 				}
 			}
 		}
 		if (banderaIncolora) {
 			return true;
-		} else {
+		} 
+		else {
 			return bandera;
 		}
 	}
-	
+
 	@Override
 	public String toString() {
-		String msg="nombre=" + nombre + "\ntipo=" + tipo + "\nEnergias necesarias:";
-		for(int i= 0; i< costo.size(); i++) {
-			msg+= costo.get(i).getTipo()+ " ";
+		String msg = "Nombre: " + getNombre() + "\nTipo: " + getTipo() + "\nEnergias necesarias: \n";
+		for (int i = 0; i < costo.size(); i++) {
+			msg += costo.get(i).getTipo() + " ";
 		}
-		msg+="\ndamage=" + damage ;
+		msg += "\ndamage=" + getDamage();
 		return msg;
 	}
-}
+	}

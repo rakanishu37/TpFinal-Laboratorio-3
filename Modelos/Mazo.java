@@ -48,7 +48,8 @@ public class Mazo implements moverCarta<Carta> {
 		int cartasRestantes = MAX_CARTAS;
 		int aux = 0;
 		Vector<Carta> temporal = new Vector<Carta>();
-		Random random = new Random();
+
+		Random random = new Random(System.currentTimeMillis());
 		while (cartasRestantes > 0) {
 			// Elijo una carta al azar entre 0 y las cartas restantes(39 porque 40 es
 			// posicion invalida)
@@ -101,10 +102,8 @@ public class Mazo implements moverCarta<Carta> {
 				aux = buscarCarta(listaDeCartas, idCartaBuscada);
 				nuevoMazo.add(aux);
 			}
-		}
-		
+		}		
 		setCartas(nuevoMazo);
-
 	}
 
 	/**
@@ -159,7 +158,5 @@ public class Mazo implements moverCarta<Carta> {
 	@Override
 	public String toString() {
 		return cartas.toString();
-	}
-	
-	
+	}		
 }

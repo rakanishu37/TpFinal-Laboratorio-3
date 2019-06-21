@@ -5,6 +5,7 @@ public class Trainer extends Carta
 	private String palabraClave;//Capas un arreglo y que se interprete afuera
 	private String descripcion;
 	private int numero;
+	
 	public Trainer(String id,String nombre, String Clave,int num, String descripcion) 
 	{
 		super(id,nombre);
@@ -46,7 +47,7 @@ public class Trainer extends Carta
 	
 	@Override
 	public String toString() {
-		return"Trainer\n"+super.toString()+ "descripcion= " + descripcion + "\n";
+		return"Trainer\n"+super.toString()+ "Descripcion: " + getDescripcion() + "\n";
 		
 	}
 }

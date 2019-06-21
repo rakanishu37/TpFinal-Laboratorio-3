@@ -1,6 +1,7 @@
 package app;
 
 import Modelos.Ataque;
+import Modelos.Carta;
 import Modelos.Energia;
 import Modelos.Jugador;
 import Modelos.Mazo;
@@ -20,7 +21,7 @@ public class Main {
 
 	public static void main(String[] args) {		
 		
-//		ManagerBiblotecaCartas.crearArchivoFuente();
+		//ManagerBiblotecaCartas.crearArchivoFuente();
 		
 		JSONArray mazoJ1=null;
 		
@@ -39,24 +40,15 @@ public class Main {
 			e.printStackTrace();
 		}
 	
-		Jugador j1 = new Jugador( new Mazo(mazoJ1));
-		Jugador j2 = new Jugador( new Mazo(mazoJ1));
-		
-		j1.iniciarMano();
-		System.out.println(j1.getMano().getElementos());
-		System.out.println("asllalalalalalalsldfasduighseirou hvngsuieryvguerojyvureuogsryroesuivoreiuvruig");
-		System.out.println("asllalalalalalalsldfasduighseirou hvngsuieryvguerojyvureuogsryroesuivoreiuvruig");
-		System.out.println("asllalalalalalalsldfasduighseirou hvngsuieryvguerojyvureuogsryroesuivoreiuvruig");
-		j2.iniciarMano();
-		System.out.println(j2.getMano().getElementos());
-
+		Jugador j1 = new Jugador("Jugador 1", new Mazo(mazoJ1));
+		Jugador j2 = new Jugador("Jugador 2", new Mazo(mazoJ1));
+		/*j1.mezclarMazo();
+		j1.cargarPremios();
+		*/
 		
 		
-		/*
-		Tablero t= new Tablero(j1,j2);
-		
-		
+		Tablero t= new Tablero(j1,j2);		
 		t.jugar();
-*/
+
 	}
 }

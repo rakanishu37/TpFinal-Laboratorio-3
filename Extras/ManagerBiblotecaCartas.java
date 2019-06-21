@@ -18,6 +18,11 @@ import Modelos.Trainer;
 import Modelos.Pokemon;
 import Modelos.Ataque;
 
+/**
+ * Esta clase manipula y hace las acciones necesarias para crear los archivos fuentes
+ * necesarios para el funcionamiento del programa
+ *
+ */
 public class ManagerBiblotecaCartas {
 	/**
 	 * Uso interno a esta clase
@@ -162,6 +167,7 @@ public class ManagerBiblotecaCartas {
 		coleccionAArchivo(listadoTemp);
 	}
 	
+	/*
 	public static String listarCartas(HashMap<String,Carta> listaDeCartas) { 
 		//Para recorrer el mapa
 			StringBuilder msg = new StringBuilder();
@@ -170,6 +176,6 @@ public class ManagerBiblotecaCartas {
 				Map.Entry me = (Map.Entry) i.next();
 				msg.append("Id: "+me.getKey()+"\nCarta: "+me.getValue());
 			}
-			return msg.toString();
-	}
+			return msg.toString();			
+	}*/
 }

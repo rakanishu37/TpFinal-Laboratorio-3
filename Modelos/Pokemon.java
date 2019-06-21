@@ -81,13 +81,26 @@ public class Pokemon extends Carta {
 	private void setResistencia(String resist) {
 		resistencia = resist;
 	}
+	
+	public Ataque getAtaque1() {
+		return ataque1;
+	}
 
-	public Ataque getAtaque1() throws NoPuedeAtacarException {
+	public Ataque getAtaque2() {
+		return ataque2;
+	}
+
+	/**
+	 * 
+	 * @return el ataque 1 si le alcanza la energia para pagarlo
+	 * @throws NoPuedeAtacarException
+	 */
+	public Ataque retornarAtaque1() throws NoPuedeAtacarException {
 		if(!ataque1.comprobarEnergia(getEnergiasEquipadas())){
 			throw new NoPuedeAtacarException("No tiene energia suficiente para elegir el ataque");
 		}
 		else {
-			return ataque1;
+			return getAtaque1();
 		}
 	}
 
@@ -95,12 +108,17 @@ public class Pokemon extends Carta {
 		ataque1 = ataque;
 	}
 
-	public Ataque getAtaque2() throws NoPuedeAtacarException {
+	/**
+	 * 
+	 * @return el ataque 2 si le alcanza la energia para pagarlo
+	 * @throws NoPuedeAtacarException
+	 */
+	public Ataque retornarAtaque2() throws NoPuedeAtacarException {
 		if(!ataque2.comprobarEnergia(getEnergiasEquipadas())){
 			throw new NoPuedeAtacarException("No tiene energia suficiente para elegir el ataque");
 		}
 		else {
-			return ataque2;
+			return getAtaque2();
 		}
 	}
 
@@ -171,6 +189,10 @@ public class Pokemon extends Carta {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return true si tiene la energia suficiente para pagar el costo de retirada 
+	 */
 	public boolean puedePagarCostoRetirada(){
 		boolean rta = true;
 		int equipadas = getEnergiasEquipadas().size();
@@ -181,6 +203,10 @@ public class Pokemon extends Carta {
 		return rta;
 	}
 
+	/**
+	 * 
+	 * @return true si la vida del pokemon esta en 0
+	 */
 	public boolean estaIncapacitado() {
 		boolean rta= false;
 		if(getVidaActual()==0) {
@@ -190,9 +216,13 @@ public class Pokemon extends Carta {
 	}
 	
 
+	/**
+	 * 
+	 * @return true si ataque2 es distinto de null
+	 */
 	public boolean tieneSegundoAtaque() {
 		boolean rta = false;
-		if(ataque2!=null) {
+		if(getAtaque2()!=null) {
 			rta = true;
 		}
 		return rta;
@@ -201,17 +231,21 @@ public class Pokemon extends Carta {
 	@Override
 	public String toString() {
 		String msg= "Pokemon\n"+ super.toString()
-				+ "vidaMaxima= " + vidaMaxima 
-				+ "\nvidaActual= " + vidaActual 
-				+ "\ntipo= " + tipo
-				+ "\ncostoRetirada= " + costoRetirada 
-				+ "\nenergiasEquipadas= " + energiasEquipadas.toString() 
-				+ "\ndebilidad= " + debilidad
-				+ "\nresistencia= " + resistencia 
-				+"\n------ataque1------\n" + ataque1.toString() 
+				+ "vidaMaxima= " + getVidaMaxima() 
+				+ "\nvidaActual= " + getVidaActual() 
+				+ "\ntipo= " + getTipo()
+				+ "\ncostoRetirada= " + getCostoRetirada() 
+				+ "\nenergiasEquipadas= " ;
+				ArrayList<Energia> energiaAux = getEnergiasEquipadas();
+				for(Energia e: energiaAux) {
+					msg+= e.mostrarInfoReducido();
+				}
+				msg+="\ndebilidad= " + getDebilidad()
+				+ "\nresistencia= " + getResistencia() 
+				+"\n------ataque1------\n" + getAtaque1().toString() 
 				+"\n-------------------\n";
-		if(ataque2!=(null)) {
-			msg+= "\n------ataque2------\n" + ataque2.toString()
+		if(tieneSegundoAtaque()) {
+			msg+= "\n------ataque2------\n" + getAtaque2().toString()
 				 +"\n-------------------\n";
 		}		
 		return msg;

@@ -3,12 +3,13 @@ package Modelos;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 
 import Exceptions.*;
+import Extras.Pantalla;
 import Extras.Teclado;
 
 public class Tablero {
-	// SACAR EL SCANNER
 
 	private Teclado teclado;
 	private Jugador j1;
@@ -20,10 +21,9 @@ public class Tablero {
 	private boolean energiaJugada;
 	private boolean ganador;
 
-
 	public Tablero(Jugador jugador1, Jugador jugador2) {
 		ganador = false;
-		
+
 		j1 = jugador1;
 		j2 = jugador2;
 	}
@@ -36,20 +36,29 @@ public class Tablero {
 		return jugadorDefensor;
 	}
 
-	public void setJugadorAtacante(Jugador jugadorAtacante) {
-		this.jugadorAtacante = jugadorAtacante;
+	private boolean getEnergiaJugada() {
+		return energiaJugada;
 	}
 
-	public void setJugadorDefenstor(Jugador defensor) {
+	public void setJugadorAtacante(Jugador atacante) {
+		jugadorAtacante = atacante;
+	}
+
+	public void setJugadorDefensor(Jugador defensor) {
 		jugadorDefensor = defensor;
 	}
 
+	/**
+	 * Se juega una partida hasta que haya un ganador por alguna razon o pierda el
+	 * otro jugador
+	 */
 	public void jugar() {
-		Carta c = null;		
-		j1.iniciarMano();
-		j2.iniciarMano();
-		jugadorAtacante = j1;
-		jugadorDefensor = j2;
+		// Se inicia la mano de los jugadores con una mano valida y se cargan sus premios
+		primeraMano();
+
+		// Comienza jugando jugador1
+		setJugadorAtacante(j1);
+		setJugadorDefensor(j2);
 
 		while (!ganador) {
 
@@ -68,18 +77,28 @@ public class Tablero {
 		}
 	}
 
+	/**
+	 * 
+	 * @return texto del menu
+	 */
 	private String menuTexto() {
 		StringBuilder msg = new StringBuilder();
-		msg.append("1- Ver Mano");
-		msg.append("2- Ver Banca");
-		msg.append("3- Ver Pokemon Defensor");
-		msg.append("4- Ver Banca Defensora");
-		msg.append("5- Retirar Pokemon");
-		msg.append("6- Atacar");
-		msg.append("7- Pasar turno");
+		msg.append("1- Menu Mano\n");
+		msg.append("2- Ver Banca\n");
+		msg.append("3- Ver Pokemon Activo\n");
+		msg.append("4- Ver Pokemon Defensor\n");
+		msg.append("5- Ver Banca Defensora\n");
+		msg.append("6- Retirar Pokemon\n");
+		msg.append("7- Atacar\n");
+		msg.append("8- Pasar turno\n");
 		return msg.toString();
 	}
 
+	/**
+	 * Menu que permite interactuar con la mano
+	 * 
+	 * @throws MazoVacioException
+	 */
 	private void menuMano() throws MazoVacioException {
 
 		int opcion = -1;
@@ -90,12 +109,16 @@ public class Tablero {
 			opcion = teclado.nextInt();
 			switch (opcion) {
 			case 1:
-				Carta c = jugadorAtacante.elegirCarta();
-				if (energiaJugada) {
-					jugadorAtacante.getMano().insertarCarta(c);
+				Carta c = getJugadorAtacante().elegirCarta();
+				// Si ya se jugo una energia en este turno del jugador se la inserta nuevamente
+				// en su mano
+				if (getEnergiaJugada()) {
+					getJugadorAtacante().getMano().insertarCarta(c);
 					System.out.println("Ya se bajo una energia este turno");
 				} else {
 					try {
+						// En el caso de que la banca este llena
+						// se le permite al jugador seguir realizando acciones
 						jugarCarta(c);
 					} catch (BancaLLenaException e) {
 						System.out.println(e.getMessage());
@@ -109,12 +132,22 @@ public class Tablero {
 		} while (opcion != 0);
 	}
 
+	/**
+	 * Menu principal del juego que posee todas las acciones de un jugador puede
+	 * realizar en su turno
+	 * 
+	 * @throws MazoVacioException
+	 * @throws BancaVaciaException
+	 * @throws PremiosVacioException
+	 */
 	private void menu() throws MazoVacioException, BancaVaciaException, PremiosVacioException {
 		int opcion = -1;
-		System.out.println(menuTexto());
+		
 		// Se detiene este while cuando decidio atacar o pasar el turno
-		while (opcion != 6 && opcion != 7) {
-			System.out.println();
+		do {
+			System.out.println(getJugadorAtacante().getNombre());
+			System.out.println(menuTexto());
+			opcion = teclado.nextInt();
 			switch (opcion) {
 			case 1:
 				menuMano();
@@ -125,71 +158,99 @@ public class Tablero {
 				break;
 
 			case 3:
-				verPokemonDefensor();
+				verPokemonActivo();
 				break;
 
 			case 4:
-				verBancaDefensor();
+				verPokemonDefensor();
 				break;
 			case 5:
+				verBancaDefensor();
+				break;
+			
+			case 6:
 				try {
-					jugadorAtacante.intercambiarPokemones();
+					getJugadorAtacante().intercambiarPokemones();
 				} catch (EnergiaInsuficiente e) {
 					System.out.println(e.getMessage());
 				}
-
-				break;
-			case 6:
-				atacar();
 				break;
 			case 7:
-				System.out.println("Pasando el turno");
+				atacar();
+				break;
+			case 8:
+				Pantalla.mostrarPorPantalla("Pasando el turno");
 				break;
 			}
 		}
-
+		while (opcion != 6 && opcion != 7);
 	}
 
+	/**
+	 * Produce el cambio de turno en la partida
+	 */
 	private void cambiarTurno() {
 		energiaJugada = false;
-		Jugador aux = jugadorAtacante;
-		jugadorAtacante = jugadorDefensor;
-		jugadorDefensor = aux;
+		Jugador aux = getJugadorAtacante();
+		setJugadorAtacante(getJugadorDefensor());
+		setJugadorDefensor(aux);
 	}
 
+	/**
+	 * Indica que el jugador robe una carta
+	 * 
+	 * @throws MazoVacioException
+	 */
 	private void robarCarta() throws MazoVacioException {
 		getJugadorAtacante().robarCarta();
 	}
 
+	/**
+	 * Muestra la mano del jugador
+	 */
 	private void verMano() {
-		System.out.println(jugadorAtacante.getMano());
+		Pantalla.mostrarRecurso(getJugadorAtacante().getMano().getElementos());
 	}
 
+	/**
+	 * Muestra la banca del jugador
+	 */
 	private void verBanca() {
 		if (getJugadorAtacante().getBanca().bancaVacia()) {
 			System.out.println("No hay pokemones en la banca");
 		} else {
-			System.out.println(jugadorAtacante.getBanca());
+			Pantalla.mostrarRecurso((getJugadorAtacante().getBanca().getElementos()));
 		}
 	}
 
+	/**
+	 * Muestra el pokemon activo
+	 */
 	private void verPokemonActivo() {
-		System.out.println(jugadorAtacante.getPokemonActivo());
+		Pantalla.mostrarPorPantalla((getJugadorAtacante().getPokemonActivo().toString()));
 	}
 
+	/**
+	 * Muestra el pokemon del jugador defensor
+	 */
 	private void verBancaDefensor() {
 		if (getJugadorDefensor().getBanca().bancaVacia()) {
 			System.out.println("No hay pokemones en la banca del jugador defensor");
 		}
-		System.out.println(jugadorDefensor.getBanca());
-	}
-
-	private void verPokemonDefensor() {
-		System.out.println(jugadorDefensor.getPokemonActivo());
+	Pantalla.mostrarRecurso(getJugadorDefensor().getBanca().getElementos());
 	}
 
 	/**
-	 * Resuelve segun que tipo de carta
+	 * Muestra la banca del jugador defensor
+	 */
+	private void verPokemonDefensor() {
+		Pantalla.mostrarPorPantalla((getJugadorDefensor().getPokemonActivo().toString()));
+	}
+
+	/**
+	 * Realiza una accion distinta que carta se le pase por parametro: *Pokemon sera
+	 * colocado en la banca *Energia sera equipada en un pokemon seleccionado
+	 * *Trainer producira un efecto segun sus palabras claves
 	 * 
 	 * @param c
 	 * @throws MazoVacioException
@@ -198,7 +259,6 @@ public class Tablero {
 	private void jugarCarta(Carta c) throws MazoVacioException, BancaLLenaException {
 		if (c instanceof Energia) {
 			// Se elige un pokemon que esta en el campo y se le equipa la energia
-
 			Pokemon objetivo = jugadorAtacante.elegirPokemonEnCampo();
 
 			((Energia) c).serEquipada(objetivo);
@@ -216,6 +276,12 @@ public class Tablero {
 		}
 	}
 
+	/**
+	 * Se encarga de efectuar lo que indica la carta de tipo Trainer
+	 * 
+	 * @param t
+	 * @throws MazoVacioException
+	 */
 	private void resolverTrainer(Trainer t) throws MazoVacioException {
 		String accion = t.getPalabraClave();
 
@@ -233,21 +299,78 @@ public class Tablero {
 			objetivo.aumentarVida(t.getNumero());
 			break;
 		}
-
 	}
 
+	/**
+	 * Se consulta si desea atacar y resuelva el combate
+	 * @throws BancaVaciaException
+	 * @throws PremiosVacioException
+	 */
 	private void atacar() throws BancaVaciaException, PremiosVacioException {
 		Jugador atacante = getJugadorAtacante();
 		Jugador defensor = getJugadorDefensor();
-		resolverCombate(atacante.elegirAtaque(), defensor.getPokemonActivo());
+
+		try {
+				resolverCombate(atacante.elegirAtaque(), defensor.getPokemonActivo());
+			} catch (NoPuedeAtacarException e) {
+				System.out.println(e.getMessage());
+			}
 	}
 
+	/**
+	 * Se encarga de manejar el daño de combate, robar premios y el jugador defensor reponga su pokemon activo
+	 * @param ataque que infligira daño
+	 * @param defensor pokemon que recibe el ataque
+	 * @throws BancaVaciaException si el jugador defensor se quedo sin pokemones en campo y perdio
+	 * @throws PremiosVacioException si el jugador atacante gano al quedarse sin premios
+	 */
 	private void resolverCombate(Ataque ataque, Pokemon defensor) throws BancaVaciaException, PremiosVacioException {
 		defensor.decrementarVida(ataque);
 		if (defensor.estaIncapacitado()) {
 			getJugadorDefensor().reponerPokemonActivo();
 			getJugadorAtacante().robarPremio();
 		}
-
+	}
+	/**
+	 * Hace que ambos jugadores inicien con una mano y carguen los premios
+	 */
+	private void primeraMano() 
+	{
+		j1.iniciarMano();
+		j1.cargarPremios();
+		elegirPrimerPokemon(j1);
+		
+		j2.iniciarMano();
+		j2.cargarPremios();
+		elegirPrimerPokemon(j2);
+	}
+	
+	private void elegirPrimerPokemon(Jugador j){
+		Pantalla.mostrarPorPantalla(j.getNombre()+" va elegir su primer pokemon");
+		Iterator<Carta> mano = j.getMano().iterator();
+		ArrayList<Pokemon> pokemonsDisponibles = new ArrayList<>();
+		
+		while(mano.hasNext()) {
+			Carta c= mano.next();
+			if(c instanceof Pokemon) {
+				pokemonsDisponibles.add((Pokemon)c);
+			}
+		}
+		
+		Pantalla.mostrarRecurso(pokemonsDisponibles);
+		
+		System.out.println("Ingrese un valor entre 1 y "+ pokemonsDisponibles.size()+" para elegir a su primer pokemon");
+		int opcion = teclado.nextInt()-1;
+		
+		while(opcion<0 && opcion >pokemonsDisponibles.size()) {
+			System.out.println("Valor incorrecto\nIngrese un valor entre 1 y "+ pokemonsDisponibles.size()+" para elegir a su primer pokemon");
+			opcion = teclado.nextInt()-1;
+		}
+		Pokemon activo = pokemonsDisponibles.remove(opcion);
+		
+		int indice = j.getMano().getElementos().indexOf(activo);
+		j.getMano().extraerCarta(indice);
+		
+		j.colocarActivo(activo);
 	}
 }
