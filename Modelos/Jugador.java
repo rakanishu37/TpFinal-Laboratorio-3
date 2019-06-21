@@ -268,7 +268,7 @@ public class Jugador {
 		} else {
 			System.out.println("Ingrese 1 para elegir el ataque 1 o 2 para  el ataque 2");
 			int eleccion = teclado.nextInt();
-			while (eleccion != 1 || eleccion != 2) {
+			while (eleccion != 1 && eleccion != 2) {
 				System.out.println("Valor invalido, ingrese 1 o 2");
 				eleccion = teclado.nextInt();
 			}
@@ -291,7 +291,7 @@ public class Jugador {
 		Contenedor<Carta> auxMano = getMano();
 		System.out.println("Ingrese un numero entre 1 y " + auxMano.cantElementos()+" para jugar una carta");
 		indice = teclado.nextInt() - 1;
-		while (indice < 0 && indice > auxMano.cantElementos()) {
+		while (indice < 0 || indice > auxMano.cantElementos()) {
 			System.out.println("Valor invalido\nIngrese un numero entre 1 y " + auxMano.cantElementos()+" para jugar una carta");
 			indice = teclado.nextInt() - 1;
 		}

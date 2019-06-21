@@ -164,6 +164,10 @@ public class Pokemon extends Carta {
 					vidaPerdida= dmg-30;
 				}				
 			}
+			else
+			{
+				vidaPerdida = dmg;
+			}
 		}
 		int nuevaVida= getVidaActual() - vidaPerdida;
 		if(nuevaVida < 0) {
