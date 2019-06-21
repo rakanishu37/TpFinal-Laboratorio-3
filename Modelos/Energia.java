@@ -7,6 +7,11 @@ public class Energia extends Carta {
 	 * Constructor para crear el costo de un ataque
 	 * @param tipo
 	 */
+	public Energia(Energia e)
+	{
+		super((Carta)e);
+		setTipo(e.getTipo());
+	}
 	public Energia(String tipo) {
 		super();
 		setTipo(tipo);

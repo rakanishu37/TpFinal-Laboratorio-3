@@ -13,7 +13,13 @@ public class Trainer extends Carta
 		setNumero(num);
 		setDescripcion(descripcion);
 	}
-
+	public Trainer(Trainer t)
+	{
+		super((Carta)t);
+		setPalabraClave(t.getPalabraClave());
+		setNumero(t.getNumero());
+		setDescripcion(t.getDescripcion());
+	}
 	public String getPalabraClave() 
 	{
 		return palabraClave;

@@ -11,6 +11,12 @@ public abstract class Carta implements Serializable {
 	 * al indice de las cartas
 	 * 
 	 */
+	public Carta(Carta cartaACopiar)
+	{
+		super();
+		setId(cartaACopiar.getId());
+		setNombre(cartaACopiar.getNombre());
+	}
 	public Carta() {
 		super();
 		setId("");

@@ -29,7 +29,19 @@ public class Pokemon extends Carta {
 		setAtaque1(ataque1);
 		setAtaque2(ataque2);		
 	}
-
+	public Pokemon(Pokemon p)
+	{
+		super((Carta)p);
+		setVidaMaxima(p.getVidaMaxima());
+		setVidaActual(p.getVidaMaxima());
+		setTipo(p.getTipo());
+		setCostoRetirada(p.getCostoRetirada());
+		energiasEquipadas = new ArrayList<Energia>();
+		setDebilidad(p.getDebilidad());
+		setResistencia(p.getResistencia());
+		setAtaque1(p.getAtaque1());
+		setAtaque2(p.getAtaque2());
+	}
 	public int getVidaMaxima() {
 		return vidaMaxima;
 	}
@@ -163,7 +175,11 @@ public class Pokemon extends Carta {
 				if(dmg-30 > 0) {
 					vidaPerdida= dmg-30;
 				}				
-			}
+			}else
+	        {
+	            vidaPerdida = dmg;
+	        }
+		
 		}
 		int nuevaVida= getVidaActual() - vidaPerdida;
 		if(nuevaVida < 0) {

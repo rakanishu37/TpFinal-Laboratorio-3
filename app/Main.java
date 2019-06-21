@@ -21,7 +21,7 @@ public class Main {
 
 	public static void main(String[] args) {		
 		
-		//ManagerBiblotecaCartas.crearArchivoFuente();
+		ManagerBiblotecaCartas.crearArchivoFuente();
 		
 		JSONArray mazoJ1=null;
 		

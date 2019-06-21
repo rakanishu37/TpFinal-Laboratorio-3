@@ -113,8 +113,20 @@ public class Mazo implements moverCarta<Carta> {
 	 * @return carta buscada
 	 */
 	private Carta buscarCarta(HashMap<String, Carta> listaDeCartas, String id) {
-		Carta carta = null;
-		carta = listaDeCartas.get(id);
+		Carta aux =listaDeCartas.get(id);
+		Carta carta=null;
+		if(aux instanceof Pokemon)
+		{
+			carta=new Pokemon((Pokemon)aux);
+		}
+		else if(aux instanceof Trainer)
+		{
+			carta=new Trainer((Trainer)aux);
+		}
+		else
+		{
+			carta=new Energia((Energia)aux);
+		}
 		return carta;
 	}
 

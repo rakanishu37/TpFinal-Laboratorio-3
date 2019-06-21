@@ -23,6 +23,7 @@ public class Banca extends Contenedor<Pokemon> {
 		if (super.cantElementos() == 5) {
 			throw new BancaLLenaException("La banca esta llena y no podes bajar más");
 		} else {
+			System.out.println("se va a agregar un pokemon");
 			super.insertarCarta(p);
 		}
 	}

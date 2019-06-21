@@ -193,7 +193,7 @@ public class Jugador {
 		int indice = -1;
 		Energia elegida = null;
 
-		while (cantARetirar > -1) {
+		while (cantARetirar > 1) {
 			elegida = elegirEnergia(activo);
 
 			insertarEnCementerio(activo.desequiparEnergia(elegida));
@@ -268,7 +268,7 @@ public class Jugador {
 		} else {
 			System.out.println("Ingrese 1 para elegir el ataque 1 o 2 para  el ataque 2");
 			int eleccion = teclado.nextInt();
-			while (eleccion != 1 || eleccion != 2) {
+			while (eleccion != 1 && eleccion != 2) {
 				System.out.println("Valor invalido, ingrese 1 o 2");
 				eleccion = teclado.nextInt();
 			}
@@ -291,7 +291,7 @@ public class Jugador {
 		Contenedor<Carta> auxMano = getMano();
 		System.out.println("Ingrese un numero entre 1 y " + auxMano.cantElementos()+" para jugar una carta");
 		indice = teclado.nextInt() - 1;
-		while (indice < 0 && indice > auxMano.cantElementos()) {
+		while (indice < 0 || indice > auxMano.cantElementos()) {
 			System.out.println("Valor invalido\nIngrese un numero entre 1 y " + auxMano.cantElementos()+" para jugar una carta");
 			indice = teclado.nextInt() - 1;
 		}
@@ -333,14 +333,14 @@ public class Jugador {
 		System.out.println("Ingrese un numero entre 1 y " + tam+"para seleccionar a un pokemon de la banca");
 		eleccion = teclado.nextInt() - 1;
 
-		while (eleccion < 0 && eleccion > tam) {
+		while (eleccion < 0 || eleccion > tam) {
 			System.out.println("Valor incorrecto");
 			System.out.println("Ingrese un numero entre 1 y " + tam+"para seleccionar a un pokemon de la banca");
 			eleccion = teclado.nextInt() - 1;
 		}
 
 		// La variable que le paso a quitarPokemon() podria estar mejor
-		elegido = bancaAux.quitarPokemon(bancaAux.extraerCarta(eleccion));
+		elegido = bancaAux.extraerCarta(eleccion);
 
 		return elegido;
 	}
@@ -351,7 +351,6 @@ public class Jugador {
 	 *         este presente en la banca
 	 */
 	public Pokemon elegirPokemonEnCampo() {
-		// SACAR EL SCANNER DE ARRIBA
 		ArrayList<Pokemon> listaPokemones = new ArrayList<>();
 		// Agrego todos los pokemones del jugador a una misma coleccion
 		listaPokemones.addAll(getBanca().getElementos());

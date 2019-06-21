@@ -65,7 +65,7 @@ public class Tablero {
 			try {
 				robarCarta();
 				menu();
-
+				cambiarTurno();
 			} catch (MazoVacioException e) {
 				System.out.println(e.getMessage());
 			} catch (BancaVaciaException e) {
@@ -73,7 +73,7 @@ public class Tablero {
 			} catch (PremiosVacioException e) {
 				System.out.println(e.getMessage());
 			}
-			cambiarTurno();
+			
 		}
 	}
 
@@ -112,7 +112,8 @@ public class Tablero {
 				Carta c = getJugadorAtacante().elegirCarta();
 				// Si ya se jugo una energia en este turno del jugador se la inserta nuevamente
 				// en su mano
-				if (getEnergiaJugada()) {
+				if(c instanceof Energia && getEnergiaJugada())
+				{
 					getJugadorAtacante().getMano().insertarCarta(c);
 					System.out.println("Ya se bajo una energia este turno");
 				} else {
@@ -183,7 +184,7 @@ public class Tablero {
 				break;
 			}
 		}
-		while (opcion != 6 && opcion != 7);
+		while (opcion != 7 && opcion != 8);
 	}
 
 	/**
@@ -267,6 +268,7 @@ public class Tablero {
 			if (c instanceof Pokemon) {
 				Pokemon aux = (Pokemon) c;
 				jugadorAtacante.agregarPokemonBanca(aux);
+				System.out.println("POkemon fue agregado");
 
 			} else {
 				Trainer aux = (Trainer) c;
