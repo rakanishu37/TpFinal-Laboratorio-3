@@ -1,6 +1,9 @@
 package Modelos;
 
 import java.io.Serializable;
+/*
+AAAAAAAAAAAAAAAAAAAAAAAA
+*/
 
 public abstract class Carta implements Serializable {
 	private String id;
